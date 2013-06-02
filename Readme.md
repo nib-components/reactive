@@ -1,14 +1,14 @@
-# reactive-bindings
+# reactive
 
-  Custom reactive bindings
+  Custom reactive bindings. Use it just like reactive, but you get some new bindings
 
 ## Installation
 
-    $ component install fedup/reactive-bindings
+    $ component install fedup/reactive
 
 ## API
 
-    var reactive = require('reactive-bindings');
+    var reactive = require('reactive');
     reactive(el, obj, view);
 
 ## License
