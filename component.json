@@ -1,0 +1,18 @@
+{
+  "name": "reactive-bindings",
+  "repo": "fedup/reactive-bindings",
+  "description": "Custom reactive bindings",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {
+    "component/reactive": "*",
+    "component/value": "*",
+    "component/event": "*"
+  },
+  "development": {},
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": [
+    "index.js"
+  ]
+}
