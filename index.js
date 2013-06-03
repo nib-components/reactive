@@ -66,6 +66,9 @@ reactive.bind('data-model', function(el, attr, model) {
 
   // When the attribute changes
   this.change(function(val){
+    if(val == null) {
+      val = "";
+    }
     if(name !== "input" && name !== "select") {
       el.innerHTML = val;
     }
