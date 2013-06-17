@@ -79,6 +79,13 @@ reactive.bind('data-model', function(el, attr, model) {
       value(el, val);
     }
   });
+  
+  // Fill the model with the data immediately
+  // if there is no value on the model already
+  if(model.get(attr) == null) {
+    model.set(attr, value(el));
+  }
+  
 });
 
 /**
