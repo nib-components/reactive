@@ -10,6 +10,14 @@ reactive.unsubscribe(function(obj, prop, fn) {
   obj.off('change:'+prop, fn);
 });
 
+reactive.get(function(obj, prop) {
+  return obj.get(prop);
+});
+
+reactive.set(function(obj, prop, val) {
+  obj.set(prop, val);
+});
+
 /**
  * Hide the element when an attribute is truthy
  * data-hidden="<attr>"
