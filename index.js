@@ -73,7 +73,8 @@ reactive.bind('data-model', function(el, attr, model) {
   });
 
   // When the attribute changes
-  this.change(function(val){
+  this.change(function(){
+    var val = model.get(attr);
     if(val == null) {
       val = "";
     }
