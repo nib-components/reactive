@@ -25,7 +25,11 @@ reactive.set(function(obj, prop, val) {
 
 reactive.bind('data-hidden', function(el, value, obj) {
   this.change(function(val){
-    el.classList.toggle('is-hidden', val);
+    if (val || val === true) {
+      el.classList.add('is-hidden');
+    } else {
+      el.classList.remove('is-hidden');
+    }
   });
 });
 
@@ -36,7 +40,11 @@ reactive.bind('data-hidden', function(el, value, obj) {
 
 reactive.bind('data-visible', function(el, value, obj) {
   this.change(function(val){
-    el.classList.toggle('is-hidden', !val);
+    if (!val || val === false) {
+      el.classList.add('is-hidden');
+    } else {
+      el.classList.remove('is-hidden');
+    }
   });
 });
 
