@@ -74,7 +74,13 @@ reactive.bind('data-option-text', function(el, value, obj) {
 reactive.bind('data-model', function(el, attr, model) {
   var type = el.getAttribute('type');
   var name = el.nodeName.toLowerCase();
+  var currentValue = null;
 
+  // value() returns false for unchecked radio buttons
+  if( (type === "radio" && el.checked) || type !== "radio" ) {
+    currentValue = value(el);
+  }
+  
   // When the field changes
   events.bind(el, 'change', function(){
     model.set(attr, value(el));
@@ -82,10 +88,17 @@ reactive.bind('data-model', function(el, attr, model) {
 
   // When the attribute changes
   this.change(function(){
-    var val = model.get(attr);
+    
+    // Skips reactives initial call with no value
+    if(val === undefined) {
+      return;
+    }
+    
+    // Prevent "null" from being set in the field
     if(val == null) {
       val = "";
     }
+    
     if(name !== "input" && name !== "select") {
       el.innerHTML = val;
     }
