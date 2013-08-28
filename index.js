@@ -88,6 +88,7 @@ reactive.bind('data-model', function(el, attr, model) {
 
   // When the attribute changes
   this.change(function(){
+    var val = this.value(attr);
     
     // Skips reactives initial call with no value
     if(val === undefined) {
