@@ -25,7 +25,10 @@ reactive.set(function(obj, prop, val) {
 
 reactive.bind('data-hidden', function(el, value, obj) {
   this.change(function(val){
-    if (val || val === true) {
+    if(val === "Yes") val = true;
+    if(val === "No") val = false;
+
+    if (val) {
       el.classList.add('is-hidden');
     } else {
       el.classList.remove('is-hidden');
@@ -40,10 +43,13 @@ reactive.bind('data-hidden', function(el, value, obj) {
 
 reactive.bind('data-visible', function(el, value, obj) {
   this.change(function(val){
-    if (!val || val === false) {
-      el.classList.add('is-hidden');
-    } else {
+    if(val === "Yes") val = true;
+    if(val === "No") val = false;
+
+    if (val) {
       el.classList.remove('is-hidden');
+    } else {
+      el.classList.add('is-hidden');
     }
   });
 });
@@ -80,26 +86,25 @@ reactive.bind('data-model', function(el, attr, model) {
   if( (type === "radio" && el.checked) || type !== "radio" ) {
     currentValue = value(el);
   }
-  
+
   // When the field changes
   events.bind(el, 'change', function(){
     model.set(attr, value(el));
   });
 
   // When the attribute changes
-  this.change(function(){
-    var val = this.value(attr);
-    
+  this.change(function(val) {
+
     // Skips reactives initial call with no value
     if(val === undefined) {
       return;
     }
-    
+
     // Prevent "null" from being set in the field
     if(val == null) {
       val = "";
     }
-    
+
     if(name !== "input" && name !== "select") {
       el.innerHTML = val;
     }
@@ -110,13 +115,10 @@ reactive.bind('data-model', function(el, attr, model) {
       value(el, val);
     }
   });
-  
-  // Fill the model with the data immediately
-  // if there is no value on the model already
-  if(model.get(attr) == null) {
-    model.set(attr, value(el));
+
+  if(currentValue != null) {
+    model.set(attr, currentValue);
   }
-  
 });
 
 /**

@@ -2,7 +2,7 @@
   "name": "reactive",
   "repo": "fedup/reactive",
   "description": "Custom reactive bindings",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "keywords": [],
   "dependencies": {
     "component/reactive": "*",
