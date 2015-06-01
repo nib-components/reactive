@@ -1,0 +1,21 @@
+{
+  "name": "@nib-components/reactive",
+  "version": "0.1.2",
+  "description": "Custom reactive bindings",
+  "keywords": [],
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:nib-components/reactive.git"
+  },
+  "dependencies": {
+    "reactive": "0.14.1",
+    "component-value": "*",
+    "component-event": "*"
+  },
+  "browser": {
+    "value": "component-value",
+    "event": "component-event"
+  }
+}
